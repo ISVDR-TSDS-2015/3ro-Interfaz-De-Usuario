@@ -9,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 
 public class GuardarDatos extends ActionBarActivity {
 
@@ -61,5 +64,27 @@ public class GuardarDatos extends ActionBarActivity {
 
         // escribo en la text view
         txtMensaje.setText(Integer.toString(numero) + " - " + texto);
+    }
+
+    public void GuardarArchivoInterno(View view) {
+        String NombreArchivo = "MiArchivo.txt";
+        String string = "Hola Mundo!!!";
+        FileOutputStream outputStream;
+
+        File archivo = new File(this.getFilesDir(), NombreArchivo);
+
+        try {
+            outputStream = openFileOutput(NombreArchivo, Context.MODE_PRIVATE);
+            outputStream.write(string.getBytes());
+            outputStream.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void MostrarArchivoInterno(View view) {
+        String
+
     }
 }
