@@ -9,6 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+
 
 public class GuardarDatos extends ActionBarActivity {
 
@@ -61,5 +67,46 @@ public class GuardarDatos extends ActionBarActivity {
 
         // escribo en la text view
         txtMensaje.setText(Integer.toString(numero) + " - " + texto);
+    }
+
+    public void guardarArchivoInterno(View view) {
+        String nombreArchivo = "MiArchivo.txt";
+        String string = "Hola Mundo!!!!";
+        FileOutputStream outputStream;
+
+        File archivo = new File(this.getFilesDir(), nombreArchivo);
+
+        try {
+
+            outputStream = openFileOutput(nombreArchivo, Context.MODE_PRIVATE);
+            outputStream.write(string.getBytes());
+            outputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostrarArchivoInterno(View view) {
+        String filename = "MiArchivo.txt";
+        StringBuilder sb = new StringBuilder();
+        String line;
+
+        try {
+            FileInputStream fis = this.openFileInput(filename);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(isr);
+
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+
+            //Muestro en la textView
+            TextView lblMostrarArchivo = (TextView) findViewById(R.id.lblMostrarArchivoInterno);
+            lblMostrarArchivo.setText(sb.toString());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
