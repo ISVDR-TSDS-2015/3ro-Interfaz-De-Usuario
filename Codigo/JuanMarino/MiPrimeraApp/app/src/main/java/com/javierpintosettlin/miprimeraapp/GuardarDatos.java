@@ -9,6 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
+
 
 public class GuardarDatos extends ActionBarActivity {
 
@@ -61,5 +69,45 @@ public class GuardarDatos extends ActionBarActivity {
 
         // escribo en la text view
         txtMensaje.setText(Integer.toString(numero) + " - " + texto);
+    }
+
+    public void Guardararchivointerno(View view) {
+        String nombrearchivo="MiArchivo.text";
+        String string="holamundo";
+        FileOutputStream outputStream;
+
+        File archivo=new File(this.getFilesDir(),nombrearchivo);
+
+        try {
+            outputStream =openFileOutput(nombrearchivo,Context.MODE_PRIVATE);
+            outputStream.write(string.getBytes());
+            outputStream.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public void ArchivoInterno(View view) {
+        String filename ="MiArchivo.text";
+        StringBuilder sb =new StringBuilder();
+        String line;
+
+        try{
+            FileInputStream fis = this.openFileInput(filename);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader =new BufferedReader(isr);
+
+            while ((line = bufferedReader.readLine()) !=null) {
+                sb.append(line);
+            }
+            //Obtener el mensaje de la EditText
+            TextView lblMostrarArchivoInterno = (TextView) findViewById(R.id.lblMostrarArchivoInterno);
+            // escribo en la text view
+            lblMostrarArchivoInterno.setText(sb.toString());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
