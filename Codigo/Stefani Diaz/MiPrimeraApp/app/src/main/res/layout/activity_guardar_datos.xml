@@ -9,12 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/txtDatoGuardar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/edit_message" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,5 +32,28 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR ARCHIVO INTERNO"
+            android:onClick="guardarArchivoInterno" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mostrar Archivo Interno"
+            android:onClick="MostrarArchivoInterno" />
+
+        <TextView
+            android:id="@+id/lblMostrarArchivoInterno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"/>
+    </LinearLayout>
 
 </LinearLayout>
