@@ -56,4 +56,22 @@
             android:text="text"/>
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR SQLite"
+            android:onClick="guardarSQLite" />
+
+        <TextView
+            android:id="@+id/lblMostrarSQLite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"/>
+    </LinearLayout>
+
 </LinearLayout>
