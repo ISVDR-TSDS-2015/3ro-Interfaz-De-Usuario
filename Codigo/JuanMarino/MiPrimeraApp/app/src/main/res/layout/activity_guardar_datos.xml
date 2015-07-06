@@ -46,8 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar Archivo"
-        android:onClick="Guardararchivointerno"
-             />
+        android:onClick="Guardararchivointerno" />
 
         <Button
             android:layout_width="wrap_content"
@@ -62,25 +61,5 @@
         android:text="texto"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Guardar SQLLite"
-            android:onClick="guardarSQLite" />
-
-
-
-        <TextView
-            android:id="@+id/lblMostrarSQLLite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="texto"/>
-    </LinearLayout>
 
 </LinearLayout>
