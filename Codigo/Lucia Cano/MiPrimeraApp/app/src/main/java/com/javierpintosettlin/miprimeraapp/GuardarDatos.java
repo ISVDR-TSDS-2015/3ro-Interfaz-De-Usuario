@@ -4,13 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.util.List;
 
 
 public class GuardarDatos extends ActionBarActivity {
@@ -84,7 +89,58 @@ public class GuardarDatos extends ActionBarActivity {
     }
 
     public void MostrarArchivoInterno(View view) {
-        String
+        String filename="MiArchivo.txt";
+        StringBuilder sb = new StringBuilder();
+        String line;
 
+        try{
+            FileInputStream fis= this.openFileInput(filename);
+            InputStreamReader isr= new InputStreamReader(fis);
+            BufferedReader bufferedReader= new BufferedReader(isr);
+
+            while ((line= bufferedReader.readLine())!=null){
+                sb.append(line);
+            }
+            //muestra en la textView
+            TextView lblMostrarArchivo = (TextView) findViewById(R.id.lblMostrarArchivoInterno);
+            lblMostrarArchivo.setText(sb.toString());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void GuardarSQLite(View view){
+
+        DataBaseManejador db = new DataBaseManejador(this);
+
+/**
+ * CRUD Operations
+ * */
+
+// Insertando personas
+        Log.d("Insert: ", "Insertando ..");
+
+        db.addPersona(new Persona("Javier", "12345678"));
+        db.addPersona(new Persona("Santiago", "29876543"));
+        db.addPersona(new Persona("Lucia", "24765432"));
+        db.addPersona(new Persona("Stefani", "32095432"));
+        db.addPersona(new Persona("Juan", "30874126"));
+
+// Reading all Personas
+        Log.d("Leyendo: ", "Leyendo todas las Personas..");
+        List<Persona> personaList = db.getAllPersonas();
+
+        for (Persona per : personaList) {
+            String log = "Id: " + per.getId() + " ,Nombre: " + per.getNombre() + " ,DNI: " + per.getDni();
+
+// Writing Personas to log
+            Log.d("Name: ", log);
+
+//Muestro en la textView
+            TextView lblMostrarSQLite = (TextView) findViewById(R.id.lblMostrarSQLite);
+            lblMostrarSQLite.setText(lblMostrarSQLite.getText()+log.toString()+ "\n");
+        }
     }
 }
