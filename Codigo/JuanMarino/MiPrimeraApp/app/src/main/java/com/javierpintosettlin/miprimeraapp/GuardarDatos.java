@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.Buffer;
+import java.util.List;
 
 
 public class GuardarDatos extends ActionBarActivity {
@@ -108,6 +110,38 @@ public class GuardarDatos extends ActionBarActivity {
 
         }catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+
+    public void guardarSQLite(View view){
+
+        DataBaseManejador db = new DataBaseManejador(this);
+
+/**
+ * CRUD Operations
+ * */
+
+// Insertando personas
+        Log.d("Insert: ", "Insertando ..");
+
+        db.addPersona(new Persona("Javier", "1234567890"));
+        db.addPersona(new Persona("Santiago", "0987654321"));
+        db.addPersona(new Persona("Stefania", "666"));
+        db.addPersona(new Persona("Lucia", "654878932"));
+// Reading all Personas
+        Log.d("Leyendo: ", "Leyendo todas Personas..");
+        List<Persona> personaList = db.getAllPersonas();
+
+        for (Persona per : personaList) {
+            String log = "Id: " + per.getId() + " ,Nombre: " + per.getNombre() + " ,DNI: " + per.getDni();
+
+// Writing Personas to log
+            Log.d("Name: ", log);
+
+//Muestro en la textView
+            TextView lblMostrarSQLite = (TextView) findViewById(R.id.lblMostrarSQLLite);
+            lblMostrarSQLite.setText(log.toString());
         }
     }
 }
