@@ -1,4 +1,4 @@
-package com.javierpintosettlin.miprimeraapp;
+package diaz.stefani.appnotas;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,29 +6,26 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by USUARIO on 25/06/2015.
+ * Created by USUARIO on 07/07/2015.
  */
 public class DataBaseManejador extends SQLiteOpenHelper {
-
     //version de base de datos
-    private static final int DATABASE_VERSION= 1;
+    private static final int DATABASE_VERSION = 1;
 
     //nombre de la base de datos
-    private static final String DATABASE_NAME= "MiPrimeraAppBD";
+    private static final String DATABASE_NAME = "MiPrimeraAppBD";
 
     // tabla personas
-    private static final String TABLE_PERSONA="personas";
+    private static final String TABLE_NOTAS = "notas";
 
     //columnas de la tabla
-    private static final String KEY_ID = "id";
-    private static final String KEY_NOMBRE = "nombre";
-    private static final String KEY_DNI = "dni";
-
+    private static final String KEY_TITULO = "Titulo";
+    private static final String KEY_NOTA = "Nota";
+    private static final String KEY_FECHA = "FechaCreacion";
 
 
     //Constructor de la Clase
@@ -37,50 +34,45 @@ public class DataBaseManejador extends SQLiteOpenHelper {
     }
 
 
-
     // creacion de tablas
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_PERSONA + "("
-                + KEY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_NOMBRE + " TEXT,"
-                + KEY_DNI + " TEXT" + ")";
+        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_NOTAS + "("
+                + KEY_TITULO + " TEXT,"
+                + KEY_NOTA + " TEXT,"
+                + KEY_FECHA + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
-    // salta de version de la base de datos
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PERSONA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTAS);
 
 // Create tables again
         onCreate(db);
 
     }
 
-    /**
-     * All CRUD(Create, Read, Update, Delete) Operations
-     */
 
-// Adding new persona
-    void addPersona(Persona persona) {
+    void addNota(Notas notas) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NOMBRE, persona.getNombre()); // Nombre de persona
-        values.put(KEY_DNI, persona.getDni()); // dni de persona
+        values.put(KEY_TITULO,notas.getTitulo() );
+        values.put(KEY_NOTA, notas.getNota());
+        values.put(KEY_FECHA, notas.getFechaCreacion());
 
 // Inserting Row
-        db.insert(TABLE_PERSONA, null, values);
+        db.insert(TABLE_NOTAS, null, values);
         db.close(); // Closing database connection
     }
 
     // Getting All Personas
-    public List<Persona> getAllPersonas() {
-        List<Persona> listPersonas = new ArrayList<Persona>();
+    public List<Notas> getAllPersonas() {
+        List<Notas> listNotas = new ArrayList<Notas>();
 // Select All Query
-        String selectQuery = "SELECT * FROM " + TABLE_PERSONA;
+        String selectQuery = "SELECT * FROM " + TABLE_NOTAS;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -93,28 +85,28 @@ public class DataBaseManejador extends SQLiteOpenHelper {
                 //persona.setNombre(cursor.getString(1));
                 //persona.setDni(cursor.getString(2));
 
-                Persona persona = new Persona(Integer.parseInt(cursor.getString(0)),
+                Notas nota = new Notas (cursor.getString(0),
                         cursor.getString(1),
                         cursor.getString(2));
 
 
 // Adding persona to list
-                listPersonas.add(persona);
+                listNotas.add(nota);
             } while (cursor.moveToNext());
         }
 
 // return lista de personas
-        return listPersonas;
+        return listNotas;
     }
 
-
-    // borra todas las personas
-    void BorrarTodasLasPersonas(){
+    void BorrarTodasLasNotas(){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.execSQL("DELETE FROM " + TABLE_PERSONA);
+        db.execSQL("DELETE FROM " + TABLE_NOTAS);
 
         db.close();
 
     }
+
 }
+

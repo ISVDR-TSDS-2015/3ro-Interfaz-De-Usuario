@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">APP NOTAS</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_activity__nueva_nota">Nueva Nota</string>
+    <string name="titulo_NuevaNota"></string>
+    <string name="texto_NuevaNota"></string>
+    <string name="title_activity_activity__notas__ver_todas">Ver Todas</string>
+    <string name="btnGuardarNota">Guardar</string>
+    <string name="btnBorrarTodas">Borrar</string>
+
+</resources>
