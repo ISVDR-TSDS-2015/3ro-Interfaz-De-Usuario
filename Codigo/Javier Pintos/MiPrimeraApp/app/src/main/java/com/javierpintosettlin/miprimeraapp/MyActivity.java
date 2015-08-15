@@ -84,4 +84,20 @@ public class MyActivity extends ActionBarActivity {
         //Ir a Guardar Datos
         startActivity(intent);
     }
+
+    public void irListViewActivity(View view) {
+        //Creamos el Intent
+        Intent intent = new Intent(this, ListViewActivity.class);
+
+        //Ir a Guardar Datos
+        startActivity(intent);
+    }
+
+    public void irListViewActivity2(View view) {
+        //Creamos el Intent
+        Intent intent = new Intent(this, ListView2Activity.class);
+
+        //Ir a Guardar Datos
+        startActivity(intent);
+    }
 }

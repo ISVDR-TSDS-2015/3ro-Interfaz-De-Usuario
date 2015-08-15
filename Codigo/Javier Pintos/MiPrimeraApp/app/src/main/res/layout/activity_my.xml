@@ -33,6 +33,18 @@
             android:layout_height="wrap_content"
             android:text="@string/BtnGuardarDatos"
             android:onClick="irGuardarDatos" />
+
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ListView"
+        android:onClick="irListViewActivity" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ListView2"
+        android:onClick="irListViewActivity2" />
 </LinearLayout>
