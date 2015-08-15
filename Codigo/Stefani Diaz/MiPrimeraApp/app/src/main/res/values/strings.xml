@@ -15,5 +15,7 @@
     <!-- guardarDatos -->
     <string name="title_activity_guardar_datos">Guardar Datos</string>
     <string name="btn_mostrar_datos">Mostrar Datos</string>
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="title_activity_list_view2">ListView2Activity</string>
 
 </resources>

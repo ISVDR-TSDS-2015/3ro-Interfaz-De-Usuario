@@ -107,6 +107,19 @@ public class DataBaseManejador extends SQLiteOpenHelper {
         return listPersonas;
     }
 
+    // All Personas cursor
+    public Cursor getCursorAllPersonas() {
+
+        // Select All Query
+        String selectQuery = "SELECT id _id,nombre,dni FROM " + TABLE_PERSONA;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db.rawQuery(selectQuery,null);
+
+
+    }
+
 
     // borra todas las personas
     void BorrarTodasLasPersonas(){
