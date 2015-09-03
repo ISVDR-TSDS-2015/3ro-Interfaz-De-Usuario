@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="luciacano.app_nota.NuevaNotaActivity">
+
+
+        <TextView
+            android:id="@+id/lblTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titulo: "/>
+
+        <EditText
+            android:id="@+id/txt_Titulo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+
+
+        <TextView
+            android:id="@+id/lblNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nota: "/>
+
+    <EditText
+            android:id="@+id/txt_Nota"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/accent_material_light"
+            android:text="Guardar"
+            android:onClick="Guardar" />
+
+</LinearLayout>

@@ -59,7 +59,7 @@ public class DataBaseManejador extends SQLiteOpenHelper {
      * All CRUD(Create, Read, Update, Delete) Operations
      */
 
-    // Adding new persona
+    // Adding (registrar, agregar) new persona
     void addPersona(Persona persona) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -73,7 +73,7 @@ public class DataBaseManejador extends SQLiteOpenHelper {
     }
 
 
-    // Getting All Personas
+    // Getting (consultar, leer) All Personas
     public List<Persona> getAllPersonas() {
         List<Persona> listPersonas = new ArrayList<Persona>();
     // Select All Query
@@ -103,4 +103,25 @@ public class DataBaseManejador extends SQLiteOpenHelper {
     // return lista de personas
         return listPersonas;
     }
+
+    //all Personas cursor
+    public Cursor getCursorAllPersonas() {
+
+        // Select All Query
+        String selectQuery = "SELECT id _id, nombre, dni FROM " + TABLE_PERSONA;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        return db.rawQuery(selectQuery, null);
+    }
+
+    //Borrar Todas las Peronas
+    void  BorrarTodasLasPersonas(){
+        SQLiteDatabase db =this.getReadableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_PERSONA);
+        db.close();
+    }
+
+
 }

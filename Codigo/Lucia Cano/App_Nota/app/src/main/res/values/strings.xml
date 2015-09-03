@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">App Nota</string>
+
+    <string name="button_NuevaNota">Nueva Nota</string>
+    <string name="button_VerNota">Ver Nota</string>
+    <string name="action_settings">Configuracion</string>
+    <string name="title_activity_nueva_nota">Nueva Nota</string>
+    <string name="title_activity_ver_notas">Ver Notas</string>
+    <string name="btnBorrarNotas">Borrar</string>
+</resources>

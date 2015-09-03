@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Trabajo Practico Integrador</string>
+    <string name="NuevaNota">Nueva Nota</string>
+    <string name="VerNotas">Ver Notas</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_nueva_nota">NuevaNotaActivity</string>
+    <string name="ViewTitulo">Titulo</string>
+    <string name="ViewNota">Nota</string>
+    <string name="ButoonGuardar">Guardar</string>
+
+    <string name="title_activity_ver_notas">VerNotasActivity</string>
+</resources>
