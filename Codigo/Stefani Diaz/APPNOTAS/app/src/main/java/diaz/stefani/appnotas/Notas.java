@@ -4,6 +4,7 @@ package diaz.stefani.appnotas;
  * Created by USUARIO on 07/07/2015.
  */
 public class Notas {
+    private int id;
     private String Titulo;
     private String Nota;
     private String FechaCreacion;
@@ -19,12 +20,13 @@ public class Notas {
 
     }
 
-   // public  Notas(int _id, String _nombre, String _dni){
-    //    setId(_id);
-     //   setNombre(_nombre);
-     //   setDni(_dni);
+    public  Notas( int _id,String _titulo, String _nota, String _fechaCreacion){
+        setId(_id);
+        setTitulo(_titulo);
+        setNota(_nota);
+        setFecha(_fechaCreacion);
 
-   // }
+    }
 
 
     //PARA TITULO
@@ -53,5 +55,13 @@ public class Notas {
 
     public void setFecha(String fechaCreacion) {
         this.FechaCreacion = fechaCreacion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

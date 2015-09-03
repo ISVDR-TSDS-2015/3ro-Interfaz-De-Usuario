@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class DataBaseManejador extends SQLiteOpenHelper {
     //version de base de datos
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     //nombre de la base de datos
     private static final String DATABASE_NAME = "MiPrimeraAppBD";
@@ -23,6 +23,7 @@ public class DataBaseManejador extends SQLiteOpenHelper {
     private static final String TABLE_NOTAS = "notas";
 
     //columnas de la tabla
+    private static final String KEY_ID = "id";
     private static final String KEY_TITULO = "Titulo";
     private static final String KEY_NOTA = "Nota";
     private static final String KEY_FECHA = "FechaCreacion";
@@ -38,6 +39,7 @@ public class DataBaseManejador extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_NOTAS + "("
+                + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_TITULO + " TEXT,"
                 + KEY_NOTA + " TEXT,"
                 + KEY_FECHA + " TEXT" + ")";
@@ -107,6 +109,19 @@ public class DataBaseManejador extends SQLiteOpenHelper {
         db.close();
 
     }
+
+    public Cursor getCursorAllNotas(){
+        String selectQuery = "SELECT id _id, Titulo, Nota, FechaCreacion FROM " + TABLE_NOTAS;
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery(selectQuery,null);
+            }
+
+    void BorrarNota (long id){
+        SQLiteDatabase db= this.getWritableDatabase();
+        db.execSQL("DELETE FROM "+ TABLE_NOTAS +" WHERE ID="+id);
+        db.close();
+    }
+
 
 }
 

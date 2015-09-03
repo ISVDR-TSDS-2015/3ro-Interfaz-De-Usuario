@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.app.AlertDialog;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -66,10 +67,14 @@ public class NuevaNota extends ActionBarActivity {
 
 
 
-        long ahora = System.currentTimeMillis();
-        Date fechaa = new Date(ahora);
+        //long ahora = System.currentTimeMillis();
+        //Date fechaa = new Date(ahora);
+        //String fecha = fechaa.toString();
 
-        String fecha = fechaa.toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaActual = new Date();
+        String fecha = sdf.format(fechaActual);
+
 
         DataBaseManejador db = new DataBaseManejador(this);
 
@@ -79,13 +84,16 @@ public class NuevaNota extends ActionBarActivity {
 
 
 
+        Toast.makeText(this, "La nota se guardo correctamente", Toast.LENGTH_LONG).show();
 
 
-        AlertDialog alertDialog;
-        alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Informe");
-        alertDialog.setMessage("YA SE GUARDOO");
-        alertDialog.show();
+
+        //COMO MOSTRAR UN MENSAJE
+        //AlertDialog alertDialog;
+        //alertDialog = new AlertDialog.Builder(this).create();
+        //alertDialog.setTitle("Informe");
+        //alertDialog.setMessage("YA SE GUARDOO");
+        //alertDialog.show();
     }
 
 }
